@@ -7,9 +7,9 @@ services:
       - key: TAILSCALE_AUTHKEY
         sync: false
       - key: TAILSCALE_VERSION
-        value: 1.22.0
+        value: 1.102.4
       - key: ADVERTISE_ROUTES
-        value: 10.0.0.0/8
+        value: 10.204.0.0/16
     disk:
       name: tailscale-state
       mountPath: /var/lib/tailscale
