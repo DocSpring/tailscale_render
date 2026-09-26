@@ -9,6 +9,7 @@ RUN apt-get -qq update \
     apt-transport-https \
     ca-certificates \
     netcat-openbsd \
+    socat \
     wget \
     dnsutils \
     iputils-ping \

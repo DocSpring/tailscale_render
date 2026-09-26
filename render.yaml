@@ -8,8 +8,8 @@ services:
         sync: false
       - key: TAILSCALE_VERSION
         value: 1.102.4
-      - key: ADVERTISE_ROUTES
-        value: 10.204.0.0/16
+      - key: TCP_FORWARDS
+        value: 8123=plausible-events-db:8123
     disk:
       name: tailscale-state
       mountPath: /var/lib/tailscale

@@ -1,15 +1,16 @@
-# Tailscale subnet router on Render (DocSpring)
+# Tailscale proxy to Render private services (DocSpring)
 
-Gives the DocSpring tailnet access to Render's private network, mainly the
+Gives the DocSpring tailnet access to Render private services, mainly the
 ClickHouse database behind Plausible (pa.docspring.com). Forked from
 [render-examples/tailscale](https://github.com/render-examples/tailscale).
 
-- Service settings (env vars, Tailscale version, advertised route) are managed
-  by Terraform in `convox_racks_terraform/render`.
-- It logs in with a Tailscale OAuth client (`TAILSCALE_AUTHKEY`, from
-  `convox_racks_terraform/tailscale`) as `tag:render-subnet-router`, and its
-  route `10.204.0.0/16` is auto-approved in the tailnet ACL. No manual route
-  approval, and no auth key to expire.
+- Not a subnet router: Render moves private services between IPs anywhere in
+  `10.0.0.0/8`. This node forwards TCP ports to Render service names
+  (`TCP_FORWARDS`), resolved by Render's DNS on every connection.
+- Tailnet address: `render-tailnet-proxy:8123` (MagicDNS) → ClickHouse.
+- Logs in with a Tailscale OAuth client (`TAILSCALE_AUTHKEY`, from
+  `convox_racks_terraform/tailscale`) as `tag:render-subnet-router`.
+- Service settings are managed by Terraform in `convox_racks_terraform/render`.
 
 ---
 
