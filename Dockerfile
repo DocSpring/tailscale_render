@@ -10,6 +10,7 @@ RUN apt-get -qq update \
     ca-certificates \
     netcat-openbsd \
     socat \
+    jq \
     wget \
     dnsutils \
     iputils-ping \
